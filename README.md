@@ -19,75 +19,32 @@
 
 开源不易，如果本项目对你有帮助，那么就请给个star吧。😄
 
+# 目录
+
+- [简介](#简介)
+- [目录](#目录)
+- [功能](#功能)
+- [通知推送方式](#通知推送方式)
+- [同步上游代码](#同步上游代码)
+- [申明](#申明)
+- [参考项目](#参考项目)
+
 # 功能
 
 * [x] 沃之树领流量、浇水(12M日流量)
 * [x] 每日签到(1积分)
 * [x] 天天抽奖，每天三次免费机会(随机奖励)
 * [x] 游戏中心每日打卡(连续打卡，积分递增至最高7，第七天1G流量日包)
-* [x] 每日领取100定向积分
+* [x] 游戏中心宝箱100M任务(任务过期)
+* [x] 4G流量包看视频任务(失效)
+* [x] 每日领取100定向积分 
 * [x] 积分抽奖，每天最多抽30次(中奖几率渺茫)
 * [x] 冬奥积分活动(第1和7天，可领取600定向积分，其余领取300定向积分,有效期至下月底)
+* [x] 获取每日1G流量日包(截止日期暂时不知道)
 * [x] 邮件、钉钉、Tg、企业微信等推送运行结果
 * [x] 自动激活即将过期流量包（到期时间1天内）
 * [X] 每月领取1G流量包（过期）
 * [X] 王卡每月自动激活福利二选一(需在配置项中配置需要激活哪个，每月3号) 
-
-# 使用方式
-
-## 腾讯云函数
-
-### 方式一：手动导入zip包
-
-1. 在 [releases](https://github.com/srcrs/UnicomTask/releases) 下载最新的unicom-scf.zip包
-
-2. 进入 [创建自定义云函数](https://console.cloud.tencent.com/scf/list-create?rid=1&ns=default&functionName=helloworld-1621082690&createType=empty)
-
-3. 必要配置
-  - (1) 函数代码 --> 选择本地上传zip包 --> 上传unicom-task_scf.zip
-  - (2) 高级配置 --> 环境配置 --> 执行超时时间设置为 900
-  - (3) 触发器配置 --> 自定义创建 --> 触发周期 --> 自定义出发周期 --> Cron表达式 --> `0 30 6 * * * *`
-
-4. 点击完成。最后，进入到刚才创建的云函数，找到config.json填写账号信息，点击测试，手动运行一次，如果能够正常运行就说明部署成功。
-
->注：最后一步在config.json填写账号信息，也可以先把unicom-task_scf.zip解压，待config.json信息完善后，再进行压缩。就不用在第4步完善测试了。
-
-### 方式二：手动部署
-
-此种方式需要本地具有一些基础环境，包括node(10.x)、python(3.6)。
-
-git bash界面
-
-1. git clone https://github.com/srcrs/UnicomTask.git
-
-2. cd UnicomTask
-
-3. 使用编辑器在 UnicomTask/config.json 完善账号信息
-
-4. bash serverless/local_deploy.sh
-
-> 此操作会涉及扫码授权操作，按照提示即可。在Mac中可能会涉及到权限的问题。
-
-# Travis 支持 (时间好像不能精确控制,和第一次运行时间有关)
-
-## 把真实的配置文件, config_of_mine.json 放到工程目录
-按照config.json的格式填写.   
-<font color=red>此文件**不会**提交到github</font>
-## 加密你的配置
-运行
->  python3 encrypconfig.py  
-> 注意,如果您只需要更新配置,可以在环境变量里面设置一个 ENCKEY=your_old_passsword 来重用以前的密码,样就不用重新更新 travis 环境变量了,建议把此key写在 config_of_mine.json中,方便查看
-会生成 config_of_mine.json.enc 文件
-
-## 将key 写入环境变量
-   1. 删除 .Travis.yml 下面 global 节点 (这个是我的,其他人解不开)
-   2. 加入环境变量(两种方式,第二种不需要安装travis 直接网页操作);
-       + 运行 `travis encrypt ENCKEY=上一步提示的key --add`
-       + 第2步骤也可以直接在travis网页端设置 环境变量,
-## 提交,并在travis 中关联此项目.
-设置每天执行一次.
-> 为什么用加密文件的方式??
-> 因为travis加密有很多字符需要转义,哪些需要转义我也懒得去研究了。
 
 # 通知推送方式
 
@@ -124,8 +81,6 @@ git bash界面
 # 同步上游代码
 
 手动或安装[pull](https://github.com/apps/pull)应用。
-
-
 
 # 申明
 
