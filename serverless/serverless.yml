@@ -8,7 +8,7 @@ inputs:
   name: ${app}-Task #函数名称
   #namespace: unicom
   src: ./  #代码路径
-  handler: index.main_handler #入口
+  handler: main.main #入口
   runtime: Python3.6 # 云函数运行时的环境
   region: ap-beijing # 云函数所在区域
   description: '联通营业厅任务脚本'
