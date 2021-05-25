@@ -395,12 +395,13 @@ def getStorageFlow(username):
         tran = {1:'activeCode',2:'prizeRecordID',3:'phone'}
         line = li.attrib.get('onclick')
         #正则匹配字符串 toDetailPage('2534','20210307073111185674422127348889','18566669999');
-        pattern = re.finditer(r'\'[\dA-Za-z]+\'',line)
-        i = 1
-        for match in pattern:
-            data[tran[i]] = match.group()[1:-1]
-            i = i + 1
-        datas.append(data)
+        if line != None: 
+            pattern = re.finditer(r'\'[\dA-Za-z]+\'',line)
+            i = 1
+            for match in pattern:
+                data[tran[i]] = match.group()[1:-1]
+                i = i + 1
+            datas.append(data)
     return datas
 
 #获取Asia/Shanghai时区时间戳
